@@ -1,0 +1,231 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    overflow: hidden;
+    background: #171513;
+    color: #f2eee8;
+    font-family: "DM Mono", monospace;
+}
+
+.app {
+    position: relative;
+    z-index: 1;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 48px 64px;
+}
+
+/* Ambient background */
+
+.ambient {
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(120px);
+    opacity: 0.32;
+    pointer-events: none;
+}
+
+.ambient-one {
+    width: 420px;
+    height: 420px;
+    background: #a75d3d;
+    top: -180px;
+    left: -120px;
+}
+
+.ambient-two {
+    width: 520px;
+    height: 520px;
+    background: #66528f;
+    bottom: -250px;
+    right: -160px;
+}
+
+/* Header */
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.brand {
+    letter-spacing: 0.35em;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.tagline {
+    color: rgba(242, 238, 232, 0.45);
+    font-family: "Playfair Display", serif;
+    font-style: italic;
+    font-size: 1rem;
+}
+
+/* Timer */
+
+.timer-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 4vh;
+}
+
+.mode-label {
+    color: rgba(242, 238, 232, 0.45);
+    font-size: 0.65rem;
+    letter-spacing: 0.28em;
+    margin-bottom: 28px;
+}
+
+.timer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "DM Mono", monospace;
+    font-size: clamp(7rem, 18vw, 14rem);
+    font-weight: 400;
+    letter-spacing: -0.08em;
+    line-height: 1;
+}
+
+.colon {
+    opacity: 0.45;
+    font-size: 0.72em;
+    margin: 0 0.06em;
+    transform: translateY(-0.04em);
+}
+
+.drift-line {
+    position: relative;
+    width: min(320px, 45vw);
+    height: 1px;
+    margin-top: 34px;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(242, 238, 232, 0.18),
+        transparent
+    );
+}
+
+.drift-dot {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgba(242, 238, 232, 0.75);
+    transform: translate(-50%, -50%);
+}
+
+.timer-message {
+    margin-top: 28px;
+    color: rgba(242, 238, 232, 0.5);
+    font-family: "Playfair Display", serif;
+    font-style: italic;
+    font-size: 1.1rem;
+}
+
+.start-button {
+    margin-top: 42px;
+    border: 1px solid rgba(242, 238, 232, 0.25);
+    border-radius: 999px;
+    background: rgba(242, 238, 232, 0.08);
+    color: #f2eee8;
+    padding: 14px 38px;
+    font-family: "DM Mono", monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    cursor: pointer;
+    transition: 0.25s ease;
+}
+
+.start-button:hover {
+    background: rgba(242, 238, 232, 0.16);
+    transform: translateY(-2px);
+}
+
+/* Footer */
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.mode-selector {
+    display: flex;
+    gap: 22px;
+}
+
+.mode {
+    border: none;
+    background: transparent;
+    color: rgba(242, 238, 232, 0.35);
+    font-family: "DM Mono", monospace;
+    font-size: 0.7rem;
+    cursor: pointer;
+    padding-bottom: 6px;
+    transition: color 0.2s ease;
+}
+
+.mode:hover {
+    color: rgba(242, 238, 232, 0.75);
+}
+
+.mode.active {
+    color: #f2eee8;
+    border-bottom: 1px solid #f2eee8;
+}
+
+.session {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 8px;
+    color: rgba(242, 238, 232, 0.35);
+    font-size: 0.6rem;
+    letter-spacing: 0.12em;
+}
+
+.session-number {
+    color: rgba(242, 238, 232, 0.75);
+    font-size: 0.7rem;
+}
+
+/* Smaller screens */
+
+@media (max-width: 700px) {
+    .app {
+        padding: 32px 24px;
+    }
+
+    .header,
+    .footer {
+        flex-direction: column;
+        align-items: center;
+        gap: 24px;
+    }
+
+    .footer {
+        align-items: center;
+    }
+
+    .session {
+        align-items: center;
+    }
+
+    .mode-selector {
+        gap: 14px;
+    }
+}

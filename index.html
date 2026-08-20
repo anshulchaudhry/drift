@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drift — Focus Timer</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="focus-mode">
+
+    <div class="ambient ambient-one"></div>
+    <div class="ambient ambient-two"></div>
+
+    <main class="app">
+
+        <header class="header">
+            <div class="brand">DRIFT</div>
+            <p class="tagline">drift into focus</p>
+        </header>
+
+        <section class="timer-section">
+
+            <p class="mode-label">FOCUS</p>
+
+            <div class="timer">
+                <span>25</span>
+                <span class="colon">:</span>
+                <span>00</span>
+            </div>
+
+            <div class="drift-line">
+                <span class="drift-dot"></span>
+            </div>
+
+            <p class="timer-message">take your time getting there.</p>
+
+            <button class="start-button">Begin</button>
+
+        </section>
+
+        <footer class="footer">
+
+            <div class="mode-selector">
+                <button class="mode active">Focus</button>
+                <button class="mode">Short break</button>
+                <button class="mode">Long break</button>
+            </div>
+
+            <div class="session">
+                <span>SESSION</span>
+                <span class="session-number">01 / 04</span>
+            </div>
+
+        </footer>
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
