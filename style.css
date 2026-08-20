@@ -169,24 +169,46 @@ body {
 }
 
 .mode {
+    display: flex;
+    align-items: center;
+    gap: 8px;
     border: none;
     background: transparent;
-    color: rgba(242, 238, 232, 0.35);
+    color: rgba(242, 238, 232, 0.32);
     font-family: "DM Mono", monospace;
     font-size: 0.7rem;
     cursor: pointer;
-    padding-bottom: 6px;
-    transition: color 0.2s ease;
+    padding: 6px 0;
+    transition: color 0.25s ease;
+}
+
+.mode-indicator {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: currentColor;
+    opacity: 0;
+    transform: scale(0.6);
+    transition: 0.25s ease;
+}
+
+.mode:hover {
+    color: rgba(242, 238, 232, 0.7);
+}
+
+.mode.active {
+    color: #f2eee8;
+}
+
+.mode.active .mode-indicator {
+    opacity: 1;
+    transform: scale(1);
 }
 
 .mode:hover {
     color: rgba(242, 238, 232, 0.75);
 }
 
-.mode.active {
-    color: #f2eee8;
-    border-bottom: 1px solid #f2eee8;
-}
 
 .session {
     display: flex;
