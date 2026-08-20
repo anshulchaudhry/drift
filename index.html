@@ -44,24 +44,27 @@
 
             <p class="timer-message">take your time getting there.</p>
 
-            <button class="start-button">Begin</button>
+            <div class="timer-controls">
+                <button class="start-button">Begin</button>
+                <button class="reset-button">Reset</button>
+            </div>
 
         </section>
 
         <footer class="footer">
 
             <div class="mode-selector">
-                <button class="mode active">
+                <button class="mode active" data-mode="focus">
                     <span class="mode-indicator"></span>
                     Focus
                 </button>
 
-                <button class="mode">
+                <button class="mode" data-mode="short-break">
                     <span class="mode-indicator"></span>
                     Short break
                 </button>
 
-                <button class="mode">
+                <button class="mode" data-mode="long-break">
                     <span class="mode-indicator"></span>
                     Long break
                 </button>
