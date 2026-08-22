@@ -105,7 +105,12 @@ function startTimer() {
             updateSession();
         }
 
-            startButton.textContent = "Complete";
+        if (currentMode === "focus") {
+            startButton.textContent = "Take a break →";
+        } else {
+            startButton.textContent = "Back to focus →";
+        } 
+
         }
     }, 1000);
 }
@@ -131,6 +136,12 @@ function resetTimer() {
 
 startButton.addEventListener("click", () => {
     if (remainingTime <= 0) {
+        if (currentMode === "focus") {
+            switchMode("short-break");
+        } else {
+            switchMode("focus");
+        }
+
         return;
     }
 
