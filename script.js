@@ -10,7 +10,7 @@ const modeLabel = document.querySelector(".mode-label");
 const modes = {
     focus: {
         label: "FOCUS",
-        duration: 20 * 60
+        duration: 25 * 60
     },
     "short-break": {
         label: "SHORT BREAK",
@@ -22,7 +22,7 @@ const modes = {
     }
 };
 
-let totalTime = 20 * 60;
+let totalTime = 25 * 60;
 let remainingTime = totalTime;
 let timerInterval = null;
 let isRunning = false;
@@ -88,6 +88,7 @@ function startTimer() {
 
         if (remainingTime <= 0) {
             clearInterval(timerInterval);
+            timerInterval = null;
             isRunning = false;
             startButton.textContent = "Complete";
         }
