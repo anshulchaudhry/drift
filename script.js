@@ -6,6 +6,7 @@ const driftGlow = document.querySelector(".drift-glow");
 
 const modeButtons = document.querySelectorAll(".mode");
 const modeLabel = document.querySelector(".mode-label");
+const sessionNumber = document.querySelector(".session-number");
 
 const modes = {
     focus: {
@@ -26,6 +27,8 @@ let totalTime = 25 * 60;
 let remainingTime = totalTime;
 let timerInterval = null;
 let isRunning = false;
+let completedSessions = 0;
+let currentMode = "focus";
 
 function updateTimer() {
     const minutes = Math.floor(remainingTime / 60);
@@ -36,6 +39,10 @@ function updateTimer() {
         <span class="colon">:</span>
         <span>${String(seconds).padStart(2, "0")}</span>
     `;
+}
+
+function updateSession() {
+    sessionNumber.textContent = `${String(completedSessions + 1).padStart(2, "0")} / 04`;
 }
 
 function updateDrift() {
@@ -54,6 +61,8 @@ function switchMode(modeName) {
     // Stop the current timer if it is running
     clearInterval(timerInterval);
     isRunning = false;
+
+    currentMode = modeName;
 
     // Update the timer values
     totalTime = selectedMode.duration;
@@ -90,6 +99,12 @@ function startTimer() {
             clearInterval(timerInterval);
             timerInterval = null;
             isRunning = false;
+
+        if (currentMode === "focus" && completedSessions < 3) {
+            completedSessions++;
+            updateSession();
+        }
+
             startButton.textContent = "Complete";
         }
     }, 1000);
