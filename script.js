@@ -161,3 +161,25 @@ modeButtons.forEach((button) => {
 });
 
 updateTimer();
+document.addEventListener("keydown", (event) => {
+    if (event.code === "Space") {
+        event.preventDefault();
+        startButton.click();
+    }
+
+    if (event.key.toLowerCase() === "r") {
+        resetButton.click();
+    }
+
+    if (event.key === "1") {
+        switchMode("focus");
+    }
+
+    if (event.key === "2") {
+        switchMode("short-break");
+    }
+
+    if (event.key === "3") {
+        switchMode("long-break");
+    }
+});
