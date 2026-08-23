@@ -3,6 +3,7 @@ const resetButton = document.querySelector(".reset-button");
 const timer = document.querySelector(".timer");
 const driftWave = document.querySelector(".drift-wave");
 const driftGlow = document.querySelector(".drift-glow");
+const alarmSound = new Audio("sounds/drift-alarm.mp3");
 
 const modeButtons = document.querySelectorAll(".mode");
 const modeLabel = document.querySelector(".mode-label");
@@ -29,6 +30,7 @@ let timerInterval = null;
 let isRunning = false;
 let completedSessions = 0;
 let currentMode = "focus";
+let alarmTimeout = null;
 
 function updateTimer() {
     const minutes = Math.floor(remainingTime / 60);
@@ -56,6 +58,8 @@ function updateDrift() {
 }
 
 function switchMode(modeName) {
+    stopAlarm();
+
     const selectedMode = modes[modeName];
 
     // Stop the current timer if it is running
@@ -84,6 +88,25 @@ function switchMode(modeName) {
     updateDrift();
 }
 
+function playAlarm() {
+    alarmSound.currentTime = 0;
+    alarmSound.play();
+
+    alarmTimeout = setTimeout(() => {
+        alarmSound.currentTime = 0;
+        alarmSound.play();
+        alarmTimeout = null;
+    }, 7000);
+}
+
+function stopAlarm() {
+    clearTimeout(alarmTimeout);
+    alarmTimeout = null;
+
+    alarmSound.pause();
+    alarmSound.currentTime = 0;
+}
+
 function startTimer() {
     isRunning = true;
     startButton.textContent = "Pause";
@@ -99,6 +122,8 @@ function startTimer() {
             clearInterval(timerInterval);
             timerInterval = null;
             isRunning = false;
+
+            playAlarm();
 
         if (currentMode === "focus" && completedSessions < 3) {
             completedSessions++;
@@ -122,6 +147,8 @@ function pauseTimer() {
 }
 
 function resetTimer() {
+    stopAlarm();
+
     clearInterval(timerInterval);
     isRunning = false;
 
